@@ -1,0 +1,11 @@
+backender:
+  welcome_message: "hello"
+
+server:
+  port: 8083
+
+distances:
+  maxDistance: 5
+  slot: 0.5
+
+boxRequired: pizza,flamingo,cake

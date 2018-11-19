@@ -1,8 +1,0 @@
-
-Osquid:S1612D",Replace this lambda with a method reference.(ø›µşÿÿÿÿ8İ¹ğÙò,
-Rsquid:S28645"4Iterate over the "entrySet" instead of the "keySet".(”ß°í8Ë¤³™ò,
-isquid:S13019"KReplace this "switch" statement by "if" statements to increase readability.(ğÌ8®ÈëÙò,
-Jsquid:S1612<",Replace this lambda with a method reference.(ÿŸà•8µÖîÙò,
-Usquid:S1135."2Complete the task associated to this TODO comment.(İˆ‡‰ùÿÿÿÿ8Õ³°Áò,
-|squid:S2293)"YReplace the type specification in this constructor call with the diamond operator ("<>").(éö€¬øÿÿÿÿ8Ë¤³™ò,
-W"squid:SwitchLastCaseIsDefaultCheck9""Add a default case to this switch.(ğÌ8®ÈëÙò,

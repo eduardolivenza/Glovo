@@ -9,3 +9,4 @@ distances:
   slot: 0.5
 
 boxRequired: pizza,flamingo,cake
+prioritize: vip, food

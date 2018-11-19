@@ -10,6 +10,11 @@ class Order {
     private Location pickup;
     private Location delivery;
 
+    //<TODO> remove checking fields
+    double pickupDistance;
+    double totalDistance;
+    int slot;
+
     String getId() {
         return id;
     }

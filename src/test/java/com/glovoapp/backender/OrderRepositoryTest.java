@@ -1,6 +1,9 @@
 package com.glovoapp.backender;
 
 
+import com.glovoapp.backender.business.Location;
+import com.glovoapp.backender.business.Order;
+import com.glovoapp.backender.repositories.OrderRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -8,7 +11,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
-class OrderRepositoryTest {
+public class OrderRepositoryTest {
+
     @Test
     void findAll() {
         List<Order> orders = new OrderRepository().findAll();

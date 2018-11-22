@@ -1,5 +1,7 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.repositories;
 
+import com.glovoapp.backender.business.IOrderRepository;
+import com.glovoapp.backender.business.Order;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import org.springframework.stereotype.Component;
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-class OrderRepository {
+public class OrderRepository implements IOrderRepository {
     private static final String ORDERS_FILE = "/orders.json";
     private static final List<Order> orders;
 
@@ -26,7 +28,7 @@ class OrderRepository {
         }
     }
 
-    List<Order> findAll() {
+    public List<Order> findAll() {
         return new ArrayList<>(orders);
     }
 

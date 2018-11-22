@@ -1,12 +1,17 @@
+## This file replaces the requested properties file. I used YAML because its indentation makes things easily readable
 backender:
   welcome_message: "hello"
 
 server:
   port: 8083
 
+# group where you can configure distances. MaxDistance is the maximum where a courier without motorbike or electric scooter can arrive
+# Slot is used for prioring and split orders in groups.
 distances:
   maxDistance: 5
   slot: 0.5
 
+#List of required words that must need a courier with a box
 boxRequired: pizza,flamingo,cake
+# Prioritizes kind of orders. If words vip or food are not present then just distance priorization is applied.
 prioritize: vip, food

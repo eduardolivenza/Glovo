@@ -1,43 +1,36 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.business;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.partitioningBy;
 
 @Component
-public class BusinessLayer {
+public class OrderFilter {
 
-    private final OrderRepository orderRepository;
-    private final CourierRepository courierRepository;
     private final double maxDistance;
     private final String[] requiredBoxWords;
     private final String[] prioritize;
 
-    public BusinessLayer(@Value("${distances.maxDistance}") double maxDistance, @Value("${boxRequired}") String[] requiredBoxWords,  @Value("${prioritize}") String[] prioritize, OrderRepository orderRepository, CourierRepository courierRepository){
-        this.maxDistance = maxDistance;
-        this.orderRepository = orderRepository;
-        this.courierRepository = courierRepository;
+    public OrderFilter(@Value("${distances.maxDistance}") double maxDistance, @Value("${boxRequired}") String[] requiredBoxWords, @Value("${prioritize}") String[] prioritize)
+    {
         this.requiredBoxWords = requiredBoxWords;
         this.prioritize = prioritize;
+        this.maxDistance = maxDistance;
     }
 
-    List<Order> findAll() {
-        return orderRepository.findAll();
+    public List<Order> hideOrders(List<Order> all, Courier courier) {
+        List<Order> filteredList = filterByBox(all, courier);
+        return filterByDistance(filteredList, courier);
     }
 
-    List<Order> findByCourierId(String courierId) {
-        Courier courier = courierRepository.findById(courierId);
-        List<Order> orderList = filterByBox(findAll(), courier);
-        orderList = filterByDistance(orderList, courier);
-        orderList = priorizeOrders(orderList, courier);
-        return new ArrayList<>(orderList);
-    }
-
-    private List<Order> priorizeOrders(List<Order> orderList, Courier courier){
+    public List<Order> priorizeOrders(List<Order> orderList, Courier courier){
         HashMap<Integer, List<Order>> slotsTable = new HashMap<Integer, List<Order>>();
         for(Order o: orderList)
         {
@@ -97,22 +90,5 @@ public class BusinessLayer {
         }
         return filteredList;
     }
-
-    class OrderDistanceComparator implements Comparator<Order>
-    {
-        private Courier courier;
-
-        OrderDistanceComparator(Courier c) {
-            this.courier = c;
-        }
-
-        @Override
-        public int compare(Order o1, Order o2) {
-            Double distanceO1 = (Double) DistanceCalculator.calculateDistance(courier.getLocation(), o1.getPickup());
-            Double distanceO2 = (Double) DistanceCalculator.calculateDistance(courier.getLocation(), o2.getPickup());
-            return distanceO1.compareTo(distanceO2);
-        }
-    }
-
 
 }

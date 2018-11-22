@@ -1,15 +1,15 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.business;
 
 import java.util.Objects;
 
-class Courier {
+public class Courier {
     private String id;
     private String name;
     private Boolean box;
     private Vehicle vehicle;
     private Location location;
 
-    String getId() {
+    public String getId() {
         return id;
     }
 
@@ -29,27 +29,27 @@ class Courier {
         return location;
     }
 
-    Courier withId(String id) {
+    public Courier withId(String id) {
         this.id = id;
         return this;
     }
 
-    Courier withName(String name) {
+    public Courier withName(String name) {
         this.name = name;
         return this;
     }
 
-    Courier withBox(Boolean box) {
+    public Courier withBox(Boolean box) {
         this.box = box;
         return this;
     }
 
-    Courier withVehicle(Vehicle vehicle) {
+    public Courier withVehicle(Vehicle vehicle) {
         this.vehicle = vehicle;
         return this;
     }
 
-    Courier withLocation(Location location) {
+    public Courier withLocation(Location location) {
         this.location = location;
         return this;
     }

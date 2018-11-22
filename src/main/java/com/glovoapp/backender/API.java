@@ -1,5 +1,6 @@
 package com.glovoapp.backender;
 
+import com.glovoapp.backender.business.ICore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -18,12 +19,12 @@ import java.util.stream.Collectors;
 @EnableAutoConfiguration
 class API {
     private final String welcomeMessage;
-    private final BusinessLayer businessLayer;
+    private final ICore core;
 
     @Autowired
-    API(@Value("${backender.welcome_message}") String welcomeMessage, BusinessLayer businessLayer) {
+    API(@Value("${backender.welcome_message}") String welcomeMessage, ICore core) {
         this.welcomeMessage = welcomeMessage;
-        this.businessLayer = businessLayer;
+        this.core = core;
     }
 
     @RequestMapping("/")
@@ -35,7 +36,7 @@ class API {
     @RequestMapping("/orders")
     @ResponseBody
     List<OrderVM> orders() {
-        return businessLayer.findAll()
+        return core.findAll()
                 .stream()
                 .map(order -> new OrderVM(order.getId(), order.getDescription()))
                 .collect(Collectors.toList());
@@ -44,7 +45,7 @@ class API {
     @RequestMapping("/orders/{courierId}")
     @ResponseBody
     List<OrderVM> ordersForCourier(@PathVariable String courierId) {
-        return businessLayer.findByCourierId(courierId)
+        return core.findByCourierId(courierId)
                 .stream()
                 .map(order -> new OrderVM(order.getId(), order.getDescription(), order.slot, order.pickupDistance, order.getVip(), order.getFood()))
                 .collect(Collectors.toList());

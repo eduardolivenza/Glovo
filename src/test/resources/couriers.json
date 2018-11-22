@@ -1,40 +1,41 @@
 [
+  // All couriers are located in torre agbar
   {
     "id": "courier-1",
     "name": "Manolo Escobar",
     "box": true,
     "vehicle": "MOTORCYCLE",
     "location": {
-      "lat": 41.3965463,
-      "lon": 2.1963997
+      "lat": 41.4034422,
+      "lon": 2.1894946
     }
   },
   {
     "box": false,
     "vehicle": "MOTORCYCLE",
     "location": {
-      "lat": 41.37734679973621,
-      "lon": 2.163016728553536
+      "lat": 41.4034422,
+      "lon": 2.1894946
     },
-    "name": "courier-6edab0726c86",
+    "name": "Paco pil",
     "id": "courier-2"
-  },
-  {
-    "box": false,
-    "vehicle": "BICYCLE",
-    "location": {
-      "lat": 41.38005925397267,
-      "lon": 2.16826435705024
-    },
-    "name": "courier-885bcb0620a2",
-    "id": "courier-3"
   },
   {
     "box": true,
     "vehicle": "BICYCLE",
     "location": {
-      "lat": 41.389124526959925,
-      "lon": 2.1815506849651904
+      "lat": 41.4034422,
+      "lon": 2.1894946
+    },
+    "name": "courier-885bcb0620a2",
+    "id": "courier-3"
+  },
+  {
+    "box": false,
+    "vehicle": "BICYCLE",
+    "location": {
+      "lat": 41.4034422,
+      "lon": 2.1894946
     },
     "name": "courier-6c583a849f4c",
     "id": "courier-4"

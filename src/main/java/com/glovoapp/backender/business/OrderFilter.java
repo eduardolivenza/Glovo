@@ -17,12 +17,14 @@ public class OrderFilter {
     private final double maxDistance;
     private final String[] requiredBoxWords;
     private final String[] prioritize;
+    private final double slotSize;
 
-    public OrderFilter(@Value("${distances.maxDistance}") double maxDistance, @Value("${boxRequired}") String[] requiredBoxWords, @Value("${prioritize}") String[] prioritize)
+    public OrderFilter(@Value("${distances.maxDistance}") double maxDistance, @Value("${distances.slot}") double slotSize,  @Value("${boxRequired}") String[] requiredBoxWords, @Value("${prioritize}") String[] prioritize)
     {
         this.requiredBoxWords = requiredBoxWords;
         this.prioritize = prioritize;
         this.maxDistance = maxDistance;
+        this.slotSize = slotSize;
     }
 
     public List<Order> hideOrders(List<Order> all, Courier courier) {
@@ -35,7 +37,7 @@ public class OrderFilter {
         for(Order o: orderList)
         {
             double distance = DistanceCalculator.calculateDistance(courier.getLocation(), o.getPickup());
-            int slot = (int) (distance / 0.5);
+            int slot = (int) (distance / slotSize);
             //<TODO> remove checkers
             o.slot = slot;
             o.pickupDistance = distance;

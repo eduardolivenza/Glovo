@@ -18,7 +18,7 @@ public class CoreImplTest {
 
     @BeforeEach
     public void setUp(){
-        OrderFilter orderFilter = new OrderFilter(5, new String[]{"pizza", "cake"}, new String[]{"vip", "food"});
+        OrderFilter orderFilter = new OrderFilter(5, 0.5, new String[]{"pizza", "cake"}, new String[]{"vip", "food"});
         this.coreImpl = new CoreImpl( new OrderRepository(), new CourierRepository(), orderFilter);
     }
 

@@ -47,7 +47,7 @@ class API {
     List<OrderVM> ordersForCourier(@PathVariable String courierId) {
         return core.findByCourierId(courierId)
                 .stream()
-                .map(order -> new OrderVM(order.getId(), order.getDescription(), order.slot, order.pickupDistance, order.getVip(), order.getFood()))
+                .map(order -> new OrderVM(order.getId(), order.getDescription()))
                 .collect(Collectors.toList());
     }
 

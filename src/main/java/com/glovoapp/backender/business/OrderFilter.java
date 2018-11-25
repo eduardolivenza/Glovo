@@ -38,10 +38,6 @@ public class OrderFilter {
         {
             double distance = DistanceCalculator.calculateDistance(courier.getLocation(), o.getPickup());
             int slot = (int) (distance / slotSize);
-            //<TODO> remove checkers
-            o.slot = slot;
-            o.pickupDistance = distance;
-            //---------------------
             slotsTable.computeIfAbsent(slot, k -> new ArrayList<>()).add(o);
         }
         List<Order> finalList = new ArrayList<>();

@@ -1,8 +1,5 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.business;
 
-import com.glovoapp.backender.business.CoreImpl;
-import com.glovoapp.backender.business.Order;
-import com.glovoapp.backender.business.OrderFilter;
 import com.glovoapp.backender.repositories.CourierRepository;
 import com.glovoapp.backender.repositories.OrderRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -23,7 +20,7 @@ public class CoreImplTest {
     }
 
     @Test
-    public void findByCourierIdTest() {
+    public void findByCourierIdTest() throws CourierNotFoundException {
 
         // courier with box and motorbike. All orders are visible
         List<Order> returnedList = coreImpl.findByCourierId("courier-1");

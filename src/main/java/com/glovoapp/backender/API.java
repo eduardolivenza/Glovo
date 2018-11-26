@@ -1,5 +1,6 @@
 package com.glovoapp.backender;
 
+import com.glovoapp.backender.business.CourierNotFoundException;
 import com.glovoapp.backender.business.ICore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -45,10 +46,16 @@ class API {
     @RequestMapping("/orders/{courierId}")
     @ResponseBody
     List<OrderVM> ordersForCourier(@PathVariable String courierId) {
-        return core.findByCourierId(courierId)
-                .stream()
-                .map(order -> new OrderVM(order.getId(), order.getDescription()))
-                .collect(Collectors.toList());
+        try {
+            return core.findByCourierId(courierId)
+                    .stream()
+                    .map(order -> new OrderVM(order.getId(), order.getDescription()))
+                    .collect(Collectors.toList());
+        }
+        catch (CourierNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
     }
 
     public static void main(String[] args) {

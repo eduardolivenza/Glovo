@@ -1,4 +1,4 @@
-package com.glovoapp.backender;
+package com.glovoapp.backender.business;
 
 import com.glovoapp.backender.business.DistanceCalculator;
 import com.glovoapp.backender.business.Location;

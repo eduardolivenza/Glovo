@@ -9,5 +9,5 @@ public interface ICore {
 
     List<Order> findAll();
 
-    List<Order> findByCourierId(String courierId);
+    List<Order> findByCourierId(String courierId) throws CourierNotFoundException;
 }

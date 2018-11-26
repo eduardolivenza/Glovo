@@ -24,11 +24,18 @@ public class CoreImpl implements ICore{
     }
 
     @Override
-    public List<Order> findByCourierId(String courierId) {
+    public List<Order> findByCourierId(String courierId) throws CourierNotFoundException {
+
         Courier courier = courierRepository.findById(courierId);
-        List<Order> orderList = filter.hideOrders(findAll(), courier);
-        orderList = filter.priorizeOrders(orderList, courier);
-        return new ArrayList<>(orderList);
+        if (courier != null){
+            List<Order> orderList = filter.hideOrders(findAll(), courier);
+            orderList = filter.priorizeOrders(orderList, courier);
+            return new ArrayList<>(orderList);
+        }
+        else
+            {
+             throw new CourierNotFoundException(courierId);
+            }
     }
 
 }

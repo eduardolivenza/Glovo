@@ -34,6 +34,7 @@ public class Location {
         return Objects.hash(lat, lon);
     }
 
+
     @Override
     public String toString() {
         return "Location{" +

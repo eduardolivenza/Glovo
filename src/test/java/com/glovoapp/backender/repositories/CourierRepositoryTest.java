@@ -3,14 +3,11 @@ package com.glovoapp.backender.repositories;
 import com.glovoapp.backender.business.Courier;
 import com.glovoapp.backender.business.Location;
 import com.glovoapp.backender.business.Vehicle;
-import com.glovoapp.backender.repositories.CourierRepository;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CourierRepositoryTest {
 

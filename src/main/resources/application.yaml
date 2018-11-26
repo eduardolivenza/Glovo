@@ -1,6 +1,6 @@
 ## This file replaces the requested properties file. I used YAML because its indentation makes things easily readable
 backender:
-  welcome_message: "hello"
+  welcome_message: "Hello, I'm Glovo app developed by Eduard. "
 
 server:
   port: 8083
